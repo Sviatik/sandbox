@@ -1,0 +1,18 @@
+- name: Add ES PGP key
+  ansible.builtin.apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add ES repository
+  ansible.builtin.copy:
+    src: elastic-8.x.list
+    dest: /etc/apt/sources.list.d/elastic-8.x.list
+
+- name: ES | Install
+  apt: name=elasticsearch state=present update_cache=yes
+
+- name: Start and enable ES service 
+  ansible.builtin.systemd:
+    name: elasticsearch
+    state: started
+    enabled: yes
