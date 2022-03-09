@@ -6,3 +6,5 @@
   roles:
   - { role: dependencies }
   - { role: es }
+  - { role: filebeat }
+  - { role: kibana }

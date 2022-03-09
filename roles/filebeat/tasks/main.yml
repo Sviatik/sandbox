@@ -1,0 +1,9 @@
+- name: Filebeat | Install
+  apt: name=filebeat state=present update_cache=yes
+
+- name: Start and enable ES service 
+  ansible.builtin.systemd:
+    name: filebeat
+    state: started
+    enabled: yes
+

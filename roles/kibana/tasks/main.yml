@@ -1,0 +1,16 @@
+---
+- name: Kibana | Install
+  apt: name=kibana state=present update_cache=yes
+
+- name: Bind Kibana on 0.0.0.0
+  ansible.builtin.lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: '#server.host: "localhost"'
+    line: 'server.host: "0.0.0.0"'
+  notify: Restart Kibana
+
+- name: Start and enable Kibana service 
+  ansible.builtin.systemd:
+    name: kibana
+    state: started
+    enabled: yes
