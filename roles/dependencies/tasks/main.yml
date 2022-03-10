@@ -1,0 +1,13 @@
+---
+- name: Java | install
+  apt: name=openjdk-8-jdk state=present update_cache=yes
+
+- name: Add ES PGP key
+  ansible.builtin.apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add ES repository
+  ansible.builtin.copy:
+    src: elastic-7.x.list
+    dest: /etc/apt/sources.list.d/elastic-7.x.list

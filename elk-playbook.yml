@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  roles:
+  - { role: dependencies }
+  - { role: es }
+  - { role: filebeat }
+  - { role: logstash }
+  - { role: kibana }

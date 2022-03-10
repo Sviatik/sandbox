@@ -1,0 +1,16 @@
+- name: Filebeat | Install
+  apt: name=filebeat state=present update_cache=yes
+
+- name: Copy filebeat config
+  ansible.builtin.copy:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
+  notify:
+    Restart Filebeat
+
+- name: Start and enable ES service 
+  ansible.builtin.systemd:
+    name: filebeat
+    state: started
+    enabled: yes
+

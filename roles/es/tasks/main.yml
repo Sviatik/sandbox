@@ -1,0 +1,8 @@
+- name: ES | Install
+  apt: name=elasticsearch state=present update_cache=yes
+
+- name: Start and enable ES service 
+  ansible.builtin.systemd:
+    name: elasticsearch
+    state: started
+    enabled: yes
