@@ -2,7 +2,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial64"
     config.vm.hostname = "elk-host"
     config.vm.provider "virtualbox" do |vb| 
-        vb.memory = 4096 
+        vb.memory = 8192
         vb.cpus = 4
     end
     config.vm.network "private_network", ip: "192.168.56.10"

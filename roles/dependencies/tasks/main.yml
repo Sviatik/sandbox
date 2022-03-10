@@ -9,5 +9,5 @@
 
 - name: Add ES repository
   ansible.builtin.copy:
-    src: elastic-8.x.list
-    dest: /etc/apt/sources.list.d/elastic-8.x.list
+    src: elastic-7.x.list
+    dest: /etc/apt/sources.list.d/elastic-7.x.list

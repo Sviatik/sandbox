@@ -1,0 +1,15 @@
+---
+- name: Logstash | Install
+  apt: name=logstash state=present update_cache=yes
+
+- name: Copy logstash config
+  ansible.builtin.copy:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+  notify: Restart Logstash
+
+- name: Start and enable logstash service 
+  ansible.builtin.systemd:
+    name: logstash
+    state: started
+    enabled: yes
